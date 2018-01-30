@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>ZoologyGiphpy</title>
+</head>
+
+
+
+<body>
+<div class="gifs"> It's Time to Gif</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+
+
+
+<script type="text/javascript">
+	var queryURL = "https://api.giphy.com/v1/gifs/trending?api_key=yfz9QKH9Q7QsJysIjnee8bMcgrPiY0iD&limit=25&rating=G";
+
+	 // var queryURL = "https://api.giphy.com/v1/gifs/random?api_key=dc6zaTOxFJmzC&tag=cats";
+	$.ajax({
+   url: queryURL,
+   method: 'GET'
+	}).done(function(response) {
+		console.log(response);
+		for (var i = 0; i < response.data.length; i++)
+		{
+			var newImg = $('<img>');
+			newImg.attr('src', response.data[i].images.fixed_height.url);
+			$('.gifs').append(newImg)
+
+		}
+		
+
+		// var newImg = $(<'img>;
+		
+
+	});
+
+
+
+
+
+
+</script>
+</body>
+</html>
