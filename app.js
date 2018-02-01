@@ -1,12 +1,13 @@
 
 var coolcats = ['coolcats', 'hungrycats', 'cat in a hat', 'simbacat', 'aquacat', 'supacat','alphacat', 'snoopcat','aquacat' ];
 var queryURL="https://api.giphy.com/v1/gifs/search?api_key=yfz9QKH9Q7QsJysIjnee8bMcgrPiY0iD&q=lions&limit=25&offset=0&rating=G&lang=en"
-
+   
     $.ajax({
    url: queryURL,
    method: 'GET'
-    }).done(function(response) {
-        console.log(response);
+    }).done(function(response) { 
+      $('.gifs').empty();
+    	console.log(response);
         for (var i = 0; i < response.data.length; i++)
         {
             var newImg = $('<img>');
@@ -17,7 +18,9 @@ var queryURL="https://api.giphy.com/v1/gifs/search?api_key=yfz9QKH9Q7QsJysIjnee8
       newImg.attr('data-moving', response.data[i].images.fixed_height.url )
             $('.gifs').append(newImg)
 
+        
         }
+        
     });
 
   $(document).on('click', '.clickable', function(){
